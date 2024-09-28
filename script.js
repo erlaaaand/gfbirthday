@@ -21,10 +21,10 @@ document.getElementById('loveIcon').addEventListener('click', function () {
 // Send the custom message via WhatsApp
 document.getElementById('sendMessage').addEventListener('click', function () {
     const userMessage = document.getElementById('userMessage').value;
-    
+
     if (userMessage.trim()) { // Mengecek jika input tidak kosong
         const phoneNumber = '628979429912'; // Ganti dengan nomor WhatsApp yang diinginkan
-        const message = encodeURIComponent(userMessage);
+        const message = encodeURIComponent('Makasih ya udah inget ulang tahun aku, di hari spesial ini aku mau' + userMessage);
         const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
         window.open(whatsappURL, '_blank'); // Buka WhatsApp di tab baru
         document.getElementById('wishModal').style.display = 'none'; // Sembunyikan modal
@@ -46,4 +46,45 @@ window.addEventListener('scroll', function () {
             card.classList.add('visible');
         }
     });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Function to handle intersection
+    const handleIntersection = (entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target); // Stop observing after visible
+            }
+        });
+    };
+
+    // Create an observer
+    const options = {
+        threshold: 0.1
+    };
+    const observer = new IntersectionObserver(handleIntersection, options);
+
+    // Observe each message-card
+    const messageCards = document.querySelectorAll('.message-card');
+    messageCards.forEach(card => {
+        observer.observe(card);
+    });
+
+    // Play music when messages become visible
+    const messages = document.getElementById('messages');
+    const backgroundMusic = document.getElementById('backgroundMusic');
+
+    const messagesObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                backgroundMusic.play().catch(function (error) {
+                    console.error('Tidak dapat memutar musik:', error);
+                });
+                messagesObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    messagesObserver.observe(messages);
 });
