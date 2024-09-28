@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Ulang Tahun Sayang</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Google Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="open" id="openCardContainer">
+            <div class="card" id="openCard">
+                <h2>Ada Pesan Buat Kamu</h2>
+                <img src="https://dekatutorial.github.io/spesial_mail.png" alt="Mail Icon">
+                <h3>Tekan Untuk Membuka</h3>
+            </div>
+        </div>
+
+        <div class="messages" id="messages">
+            <img src="https://dekatutorial.github.io/spesial_stikerUltah.png" alt="Sticker Ulang Tahun" />
+            <h2>Scroll ke Bawah ya</h2>
+            <div class="message-card right">Semoga hari ulang tahunmu penuh dengan kebahagiaan dan cinta.</div>
+            <div class="message-card left">Terima kasih telah menjadi bagian penting dalam hidupku.</div>
+            <div class="message-card right">Semoga semua impianmu menjadi kenyataan.</div>
+            <div class="message-card left">Selamat Ulang Tahun, sayang!</div>
+
+            <div class="heart-container">
+                <span>Pencet love nya</span>
+                <i class="material-icons-sharp" id="loveIcon">favorite</i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for user input -->
+    <div class="modal" id="wishModal">
+        <div class="modal-content">
+            <h3>Tulis Harapanmu</h3>
+            <textarea id="userMessage" placeholder="Tulis pesanmu di sini..."></textarea>
+            <button id="sendMessage">Kirim</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
